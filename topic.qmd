@@ -1,6 +1,6 @@
 # Topic
 
-Pick some subset of the information covered in your annual review article that you are interested in exploring in more detail. 
+Personally I am a huge fan of chess and also video games and one of the main ways that they rank competitors in those two is through Elo ratings. This user guide will mainly focus on explaining how to build and also apply an Elo rating system for head-to-head competitions. This will explore how Elo rating measure different things like, competitor skill levels, how ratings change after match outcomes, and how rating difference can be used to predict future performance.
 
-Identify the scope of your user guide - what will you cover? Specific software packages? When to use or not to use a specific technique?
+This guide will also include basic step-by-step instructions for implementing an Elo rating system in R using match outcome data and will also introduce a few helpful R packages. This guide will also explain when Elo rankings work well and also may not work as well compared to other ranking systems, like Glicko.
 
