@@ -2,8 +2,20 @@
 
 What does someone trying to accomplish your chosen task need help with? 
 
+- Understand how rating systems turn wins and losses into numbers
+- Formatting match data correctly in R
+- Choosing different settings like the K-factor in Elo
+- Running the model in R using different packages
+- Interpreting what the ratings actually mean
+
 What parts are likely to be tricky? 
+
+- Making sure the data is in the right format
+- Putting the matches in the correct time order
+- Understanding what rating differences mean
+- Checking if the model is predicting good enough
 
 What resources are already available on this topic that may be helpful? Look for e.g. software vignettes, package documentation, papers about software packages, and so on.
 
+Some R packages that help make this easier are BradleyTerry2, PlayerRatings, and elo. Each of these packages have help files in R, and also example workflows showing how to prepare data and run models. As for research papers, the annual review article is perfect.
 
