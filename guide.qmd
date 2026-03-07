@@ -1,5 +1,89 @@
-# User Guide
+---
+title: "User Guide: Implementing an Elo Rating System in R"
+author: "Max Buettenback"
+format: html
+bibliography: references.bib
+---
 
-First off, you should change this section title to something more appropriate.
+## Introduction {.unnumbered}
 
-Next, well, that's up to you. Good luck!
+Elo ratings are a popular way for ranking competitors in head-to-head competitions. Each competitor has a certain rating that updates after each and every match depending on the outcome. Rating differences can be used to predict future match results too. This guide explains how to implement an Elo rating system in R using the "PlayerRatings" package. It also includes instructions for loading and preparing match data, calculating Elo ratings, visualizing ratings and interpreting the results. The workflow is based on the concepts described by Glickman and Jones.[@glickman2024]
+
+Some things that users should have before starting is R and Rstudio installed and they should also be familiar with basic R operations such as loading datasets and using packages. The dataset should also include the following columns: player1, player2, and results. Matches should be in chronological order, and any results that are missing should be removed to make sure everything is accurate.
+
+## Step 1: Data Preparation {.unnumbered}
+
+Before running any model, the dataset must be cleaned and formatted. First, check that all competitor names are consistent and correct any typos. Ensure matches are in chronological order, which is particularly important for dynamic ratings like Elo. Next, encode match outcomes numerically: wins as 1 and losses as 0. (For the sake of the user guide I will have a fake placeholder csv called matches).
+```
+library(dplyr)
+
+matches <- read.csv("matches.csv")  # Replace with your file path
+
+elo_data <- matches %>%
+  mutate(score1 = ifelse(result == "player1", 1, 0),
+         score2 = ifelse(result == "player2", 1, 0)) %>%
+  select(player1, player2, score1, score2)
+
+head(elo_data)
+```
+## Step 2: Model Selection {.unnumbered}
+
+Next we decide which rating model is appropriate for our data. For static models, like Bradley–Terry, ratings assume outcomes are independent and do not change over time. For dynamic models, like Elo or Glicko, ratings update after each match. In this guide, we use the Elo model for dynamic updating.
+```
+library(PlayerRatings)
+```
+## Step 3: Parameter Specification {.unnumbered}
+
+Now we select starting ratings for each player and choose tuning parameters. In Elo, the K-factor determines how much ratings change after each match. A higher K-factor makes ratings more sensitive to match results.
+```
+k_factor <- 32
+```
+## Step 4: Model Estimation or Updating {.unnumbered}
+
+After that we use the Elo model to calculate or update ratings based on match outcomes. Each match updates player ratings using the specified K-factor.
+```
+elo_ratings <- elo(elo_data, k = k_factor)
+elo_ratings
+```
+## Step 5: Evaluation {.unnumbered}
+
+After we estimate ratings, we evaluate how well the model performs. This can include checking predictive accuracy on future matches. It could also include comparing results under different K-factors, or examining rating stability over time. Visualizing ratings helps identify inconsistencies.
+```
+ratings_df <- as.data.frame(elo_ratings$ratings) %>% arrange(desc(Rating))
+
+barplot(ratings_df$Rating,
+  names.arg = ratings_df$Player,
+  las = 2,
+  xlab = "Players",
+  ylab = "Elo Rating",
+  main = "Elo Ratings of Competitors",
+  col = "steelblue")
+```
+
+## Step 6: Interpretation {.unnumbered}
+
+Finally, interpret the results of the ratings. Use them to rank the different competitors, estimate win probabilities for future matches, and evaluate uncertainty. Larger differences in Elo ratings indicate a higher likelihood that the stronger player will win. Also consider whether the rating changes are reasonable and stable across matches.
+
+### Additional Resources {.unnumbered}
+
+R Packages
+
+- "PlayerRatings": Includes Elo, Glicko, and other rating systems; documentation shows how to prepare and update ratings.
+
+- "BradleyTerry2": Fits Bradley–Terry paired comparison models; includes examples and vignettes.
+
+- "elo": Focused specifically on Elo ratings; provides clear examples for calculating ratings from win/loss data.
+
+Documentation and Vignettes
+
+- Help files in R (e.g., ?PlayerRatings)
+
+- CRAN documentation
+
+- Example workflows showing data preparation and model execution
+
+Research Papers
+
+Original papers on Elo and Glicko, referenced in Glickman and Jones (2024), explain the statistical theory behind the models and how ratings are updated and interpreted [@glickman2024].
+
+## References {.unnumbered}
