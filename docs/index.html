@@ -338,22 +338,20 @@ Note
 <h1 class="unnumbered">Step 4: Model Estimation or Updating</h1>
 <p>The Elo model updates ratings after each match by comparing what actually happened to what was expected. If a player performs better then expected it goes up and if not it goes down.</p>
 <p>This process happens one match at a time, so ratings change as more data is added. Because of this, the matches must be in chronological order to get correct results.</p>
-<pre><code>elo_ratings &lt;- elo(elo_data, k = k_factor)
-elo_ratings</code></pre>
 </section>
 <section id="step-5-evaluation" class="level1 unnumbered">
 <h1 class="unnumbered">Step 5: Evaluation</h1>
 <p>After calculating the ratings, it is useful to evaluate and visualize the results. This helps identify which players are ranked higher and whether the ratings appear reasonable.</p>
 <p>The figure below shows an example of Elo ratings for a set of players.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>players <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Player A"</span>, <span class="st">"Player B"</span>, <span class="st">"Player C"</span>, <span class="st">"Player D"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ratings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1600</span>, <span class="dv">1500</span>, <span class="dv">1450</span>, <span class="dv">1300</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(ratings,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> players,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Players"</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Elo Rating"</span>,</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Example Elo Ratings"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>players <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Player A"</span>, <span class="st">"Player B"</span>, <span class="st">"Player C"</span>, <span class="st">"Player D"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ratings <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1600</span>, <span class="dv">1500</span>, <span class="dv">1450</span>, <span class="dv">1300</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(ratings,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> players,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Players"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Elo Rating"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Example Elo Ratings"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div id="fig-example-ratings" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -396,7 +394,7 @@ Yes, but they must be encoded correctly depending on the package.</p>
 <ul>
 <li><p>“PlayerRatings”: Includes Elo, Glicko, and other rating systems; documentation shows how to prepare and update ratings. <span class="citation" data-cites="playerratings">(<a href="#ref-playerratings" role="doc-biblioref">Stephenson and Sonas 2020</a>)</span></p></li>
 <li><p>“BradleyTerry2”: Fits Bradley–Terry paired comparison models; includes examples and vignettes. <span class="citation" data-cites="bradleyterry2">(<a href="#ref-bradleyterry2" role="doc-biblioref">Turner and Firth 2025</a>)</span></p></li>
-<li><p>“elo”: Focused specifically on Elo ratings; provides clear examples for calculating ratings from win/loss data. <span class="citation" data-cites="elo">(<a href="#ref-elo" role="doc-biblioref">Heinzen 2023</a>)</span></p></li>
+<li><p>“Elo”: Focused specifically on Elo ratings; provides clear examples for calculating ratings from win/loss data. <span class="citation" data-cites="elo">(<a href="#ref-elo" role="doc-biblioref">Heinzen 2023</a>)</span></p></li>
 </ul>
 <p>Documentation and Vignettes</p>
 <ul>
