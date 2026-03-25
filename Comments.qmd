@@ -1,0 +1,17 @@
+# Max
+
+- compilation didn't work -- no index.qmd (solution is to rename guide.qmd as index.qmd, fix _quarto.yml, and keep going. This was mentioned during class.) -should compile correctly now
+
+- prerequisites should probably have a subsection so that they show up in the TOC. Also, formality of the writing is not appropriate. -added prerequisites heading and now is in TOC. I fixed some formality issues too.
+
+- You might want to explain a bit more about what the ratings mean -- e.g. players with the same score have a 50% probability of winning, players with 200 points higher score than the opponent would win about 75% of the time, etc. -gave explainations about what the ratings mean to the user.
+
+- If you're not going to talk about different models beyond mentioning them, then it isn't appropriate to have a "model selection" step -- you're just going to select one model, so incorporate it into a different step. -got rid of the paragraph called model selection and made it into loading required package.
+
+- You should talk about how to set K-factor based on the amount of data or other parameters. -talked more about what K-factor means and the other parameters
+
+- No graphics used at all in this guide (rubric) - added some graphics
+
+- You should cite the packages you use as references as well. -Cited all packages
+
+- You should link out to the additional resources rather than just listing that they exist. -user can find the additional resources linked in the references.

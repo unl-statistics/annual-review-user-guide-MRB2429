@@ -19,3 +19,10 @@ What resources are already available on this topic that may be helpful? Look for
 
 Some R packages that help make this easier are BradleyTerry2, PlayerRatings, and elo. Each of these packages have help files in R, and also example workflows showing how to prepare data and run models. As for research papers, the annual review article is perfect.
 
+::: callout-note
+
+Make sure you do a good job of explaining how the models work and how they are fit -- this is a tricky topic and you should absolutely not shy away from diagrams and cartoons and such to explain how things work. I find that those are usually far more effective than linking to yet another vignette (especially in this area).
+
+A quick google pulls up things like this: https://researchonresearch.blog/2020/08/20/visual-demos-for-theoretical-results/ (I'm not familiar enough with the model to understand the pics, but hopefully you are?)
+
+:::
